@@ -26,12 +26,20 @@ def first_question(new_question):
     question = survey.questions[int(new_question)]
 
 
-
     return render_template('question.html', question = question)
 
 @app.post('/answer')
 def get_response():
-    question = str(len(responses))
+    responses.append(request.form.get('answer'))
+    if len(responses) >= len(survey.questions):
+        return redirect('/thankyou')
+    else:
+        question = str(len(responses))
 
 
-    return redirect(f'/questions/{question}')
+        return redirect(f'/questions/{question}')
+
+@app.get('/thankyou')
+def get_thank_you_message():
+
+    return render_template('completion.html')
