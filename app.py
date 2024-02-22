@@ -14,7 +14,14 @@ responses =[]
 def serve_home_page():
     return render_template('survey_start.html')
 
-@app.get('/questions/<question_name>')
+@app.post('/begin')
 def serve_questions():
-    return render_template('question.html')
 
+    return redirect('/questions/0')
+
+@app.get('/questions/0')
+def first_question():
+
+    question = survey.questions[0]
+
+    return render_template('question.html', question = question)
