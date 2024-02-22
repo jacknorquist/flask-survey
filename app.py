@@ -17,11 +17,21 @@ def serve_home_page():
 @app.post('/begin')
 def serve_questions():
 
+
     return redirect('/questions/0')
 
-@app.get('/questions/0')
-def first_question():
+@app.get('/questions/<new_question>')
+def first_question(new_question):
 
-    question = survey.questions[0]
+    question = survey.questions[int(new_question)]
+
+
 
     return render_template('question.html', question = question)
+
+@app.post('/answer')
+def get_response():
+    question = str(len(responses))
+
+
+    return redirect(f'/questions/{question}')
