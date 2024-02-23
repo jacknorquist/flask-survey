@@ -6,8 +6,8 @@
 <ul>
   {% for question in survey_questions %}
   <li>
-    <h1>{{question.question}}</h1>
-    <p>{{active_responses[loop.index0]}}</p>
+    <b>{{question.prompt}} </b>
+    <span>{{active_responses[loop.index0]}}</span>
   </li>
   {% endfor %}
 </ul>
