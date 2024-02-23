@@ -41,5 +41,7 @@ def get_response():
 
 @app.get('/thankyou')
 def get_thank_you_message():
-
-    return render_template('completion.html')
+    survey_questions = survey.questions
+    active_responses = responses
+    responses = []
+    return render_template('completion.html', survey_questions= survey_questions, active_responses=active_responses)

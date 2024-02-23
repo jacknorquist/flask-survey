@@ -2,7 +2,13 @@
 
 {% block content %}
 
-  <h1>Thanks for completing this survey!</h1>
-  {% for statement in question %}
-  <h5>{{statement.}}</h5> <span>answer</span>
+<h1>Thanks for completing this survey!</h1>
+<ul>
+  {% for question in survey_questions %}
+  <li>
+    <h1>{{question.question}}</h1>
+    <p>{{active_responses[loop.index0]}}</p>
+  </li>
+  {% endfor %}
+</ul>
 {% endblock %}
